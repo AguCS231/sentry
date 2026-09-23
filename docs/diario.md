@@ -28,6 +28,9 @@
 - Licencia: MIT.
 - Estructura: `docs/`, `src/{data,models,security}/`, `app/`, `tests/`, `notebooks/`, `data/`.
 
-**Próximos pasos:**
-- Descargar CIC-IDS2017.
-- Verificar checksums SHA256.
+%%writefile docs/diario.md
+# Diario de decisiones — VIGÍA (Sentry)
+
+**Repositorio:** [AguCS231/sentry](https://github.com/AguCS231/sentry)
+
+---

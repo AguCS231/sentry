@@ -28,7 +28,7 @@
 - Licencia: MIT.
 - Estructura: `docs/`, `src/{data,models,security}/`, `app/`, `tests/`, `notebooks/`, `data/`.
 
-%%writefile docs/diario.md
+
 # Diario de decisiones — VIGÍA (Sentry)
 
 **Repositorio:** [AguCS231/sentry](https://github.com/AguCS231/sentry)

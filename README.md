@@ -1,4 +1,4 @@
-# VIGÍA (Sentry)
+# Sentry (Vigía)
 
 **Sistema de detección de intrusiones en red basado en aprendizaje automático explicable y resistente a evasión.**
 
@@ -6,9 +6,9 @@ Repositorio: [AguCS231/sentry](https://github.com/AguCS231/sentry)
 
 ---
 
-## ¿Qué es VIGÍA?
+## ¿Qué es SENTRY?
 
-VIGÍA es un sistema que detecta ataques de red usando aprendizaje automático. A diferencia de los IDS tradicionales basados en firmas, VIGÍA puede detectar ataques que nunca ha visto. Además, es explicable (un analista entiende la alerta) y resistente a evasión (un atacante no lo engaña fácilmente).
+Sentry es un sistema que detecta ataques de red usando aprendizaje automático. A diferencia de los IDS tradicionales basados en firmas, VIGÍA puede detectar ataques que nunca ha visto. Además, es explicable (un analista entiende la alerta) y resistente a evasión (un atacante no lo engaña fácilmente).
 
 El nombre VIGÍA hace referencia a un guardián que observa sin descanso. *Sentry* deriva del latín *sentire* ("percibir"). Un vigía percibe con todos sus sentidos. VIGÍA percibe la red con 79 características por flujo.
 

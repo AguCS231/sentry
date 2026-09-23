@@ -13,8 +13,8 @@ data/*
 *.h5
 *.joblib
 
-# Modelos
-models/
+# Modelos entrenados (solo en la raíz, no en src/models/)
+/models/
 *.pt
 *.pth
 *.onnx

@@ -25,7 +25,7 @@ El nombre VIGÍA hace referencia a un guardián que observa sin descanso. *Sentr
 ## Dataset
 
 **CIC-IDS2017** — 2.8M flujos, 79 features, 15 clases.
-Descarga: https://www.unb.ca/cic/datasets/ids-2017.html
+Descarga:https://www.kaggle.com/datasets/biprobarai/cic-ids2017
 
 ---
 

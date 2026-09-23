@@ -1,0 +1,36 @@
+# ============================================
+# Archivos que Git NO debe subir a GitHub
+# Repositorio: AguCS231/sentry
+# ============================================
+
+data/
+*.csv
+*.parquet
+*.pkl
+*.h5
+*.joblib
+
+models/
+*.pt
+*.pth
+*.onnx
+
+venv/
+env/
+.venv/
+
+.ipynb_checkpoints/
+
+.DS_Store
+Thumbs.db
+
+*.log
+logs/
+
+.env
+*.key
+secrets.json
+
+.pytest_cache/
+.coverage
+htmlcov/

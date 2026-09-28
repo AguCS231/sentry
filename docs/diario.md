@@ -90,3 +90,31 @@
 **Próximos pasos:**
 - EDA (análisis exploratorio) del dataset.
 - Distribución de clases, valores nulos, infinitos, negativos.
+
+
+---
+
+## 2026-09-28 — Preprocesado y diseño del target
+
+**Qué probé:**
+- Diseño del target binario (BENIGN=0, ATAQUE=1).
+- Diseño del target por familias (8 clases operativas).
+- Identificación y transformación log1p de features de cola larga.
+- Split estratificado 70/15/15 con seed=42.
+- Guardado de train/val/test como Parquet separados.
+
+**Qué encontré:**
+- Ratio binario: 4.08:1 (BENIGN vs ATAQUE).
+- Ratio familias: 48.364:1 (BENIGN vs Otros).
+- Familias entrenables: BENIGN, DoS, Probe, DDoS, Brute-force, Web, Bot.
+- Familia reservada para test: Otros (Infiltration + Heartbleed, 47 muestras).
+
+**Decisiones:**
+- Binario como baseline principal (Fase 1).
+- Familias como aporte (Fase 2).
+- "Otros" íntegro en test → experimento de generalización a ataques no vistos.
+- test.parquet separado físicamente del train y val.
+- log1p aplicado a features con ratio max/mediana > 1000.
+
+**Próximos pasos:**
+- Notebook 05: modelado binario con XGBoost + experimento con/sin Destination_Port.

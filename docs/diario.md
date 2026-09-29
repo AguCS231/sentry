@@ -118,3 +118,45 @@
 
 **Próximos pasos:**
 - Notebook 05: modelado binario con XGBoost + experimento con/sin Destination_Port.
+
+
+---
+
+## 2026-09-29 — Modelado binario (baseline)
+
+**Qué probé:**
+- XGBoost binario (BENIGN vs ATAQUE) con dos conjuntos de features:
+  - Modelo A: 78 features (incluye Destination_Port).
+  - Modelo B: 77 features (excluye Destination_Port).
+- Muestreo estratificado del 50% del train (991.712 filas) por límites de RAM en Colab.
+- scale_pos_weight = 4.07 (compensa desbalance BENIGN/ATAQUE).
+- Validación sobre val.parquet completo (424.173 filas).
+
+**Resultados en validation:**
+| Métrica          | Modelo A | Modelo B | Δ (A-B) |
+|------------------|----------|----------|---------|
+| Recall ATAQUE    | 0.9993   | 0.9984   | +0.0009 |
+| Precision ATAQUE | 0.9949   | 0.9917   | +0.0032 |
+| F1 ATAQUE        | 0.9971   | 0.9950   | +0.0021 |
+| AUC-ROC          | 0.9999   | 0.9999   | +0.0001 |
+
+**Interpretación:**
+- El puerto NO es un atajo crítico en el modelo binario.
+- Diferencia de recall: 0.09% (77 ataques de 83K en val).
+- Métricas casi saturadas (AUC 0.9999) → el binario es demasiado fácil en este dataset.
+
+**Decisión:**
+- Se adopta el modelo B (sin Destination_Port) como baseline del proyecto por ser
+  más robusto frente a evasión por cambio de puerto.
+- El experimento con/sin puerto se repetirá en el modelado por familias, donde
+  las clases FTP-Patator y SSH-Patator son independientes y el puerto puede ser
+  más relevante.
+
+**Limitaciones conocidas:**
+- Métricas saturadas en binario → no permiten diferenciar bien los dos modelos.
+- Train al 50% por restricciones de memoria (no por decisión metodológica).
+- Sin ajuste de hiperparámetros (baseline con valores por defecto razonables).
+
+**Próximos pasos:**
+- Evaluación final sobre test.parquet (una sola vez).
+- Notebook 06: modelado por familias (Fase 2).

@@ -225,3 +225,40 @@
 
 **Próximos pasos:**
 - Modelo multi-clase por familias (7 clases).
+
+
+---
+
+## 2026-09-30 — Modelo por familias (Fase 2, primera versión)
+
+**Qué probé:**
+- XGBoost multi-clase sobre 7 familias (BENIGN, DoS, Probe, DDoS, Brute-force, Web, Bot).
+- Features: las mismas 77 del modelo binario B (sin Destination_Port).
+- Muestreo de train al 50% (990.947 filas) por límites de RAM en Colab.
+- Balanceo con `compute_sample_weight(class_weight="balanced")` → pesos entre 0.18 (BENIGN) y 207.27 (Bot).
+
+**Resultados en validation:**
+- F1 macro: 0.9575
+- F1 weighted: 0.9988
+- F1 por clase:
+  - BENIGN: 0.9992 | DoS: 0.9980 | Probe: 0.9965
+  - DDoS: 0.9994 | Brute-force: 0.9993 | Web: 0.9726 | Bot: 0.7378
+
+**Análisis de la clase Bot:**
+- Recall 0.9931 (detecta todos los ataques reales).
+- Precision 0.5869 → 202 BENIGN clasificados como Bot (0.06% del total BENIGN).
+- Interpretación: el peso 207× provoca sobredetección en dirección Bot. Operativamente es ruido tolerable, metodológicamente es un hallazgo.
+
+**Decisiones:**
+- No reajustamos los pesos: el resultado es defendible y el análisis de la clase Bot es un aporte.
+- El modelo se guarda como `familias_sin_puerto.json` con metadatos completos.
+- Se mantiene la coherencia metodológica con el binario (mismas 77 features).
+
+**Limitaciones conocidas:**
+- Train al 50% por RAM.
+- Clase Bot con precisión baja por peso desproporcionado.
+- Evaluación pendiente sobre test (aún no ejecutada).
+
+**Próximos pasos:**
+- Experimento con/sin Destination_Port también en familias, para completar la Fase 1.
+- SHAP por clase (Fase 2).

@@ -202,3 +202,26 @@
 **Próximos pasos:**
 - Evaluación final sobre test.parquet (una sola vez).
 - Notebook 06: modelado por familias (Fase 2).
+
+
+---
+
+## 2026-09-30 — Evaluación final del modelo binario sobre test
+
+**Qué probé:**
+- Evaluación única del modelo B (sin Destination_Port) sobre test.parquet.
+- Cálculo del recall específico sobre la familia "Otros" (Infiltration + Heartbleed, 47 muestras no vistas en entrenamiento).
+
+**Resultados en test:**
+- (rellenar con las cifras de la celda 2)
+- Recall familia "Otros": (rellenar)
+
+**Interpretación:**
+- (rellenar tras ver los resultados)
+
+**Decisión:**
+- Modelo B queda cerrado como baseline del proyecto. No se reajusta.
+- El notebook 06 arranca el modelado por familias (Fase 2).
+
+**Próximos pasos:**
+- Modelo multi-clase por familias (7 clases).

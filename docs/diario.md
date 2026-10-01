@@ -262,3 +262,29 @@
 **Próximos pasos:**
 - Experimento con/sin Destination_Port también en familias, para completar la Fase 1.
 - SHAP por clase (Fase 2).
+
+
+---
+
+## 2026-10-01 — Explicabilidad SHAP del modelo por familias
+
+**Qué probé:**
+- SHAP TreeExplainer sobre el modelo por familias sin puerto.
+- Cálculo sobre muestra aleatoria de 2000 flujos de validación.
+- Importancia global y por clase.
+
+**Top 5 features globales:**
+1. Init_Win_bytes_forward: 1.4094
+2. Init_Win_bytes_backward: 1.0819
+3. min_seg_size_forward: 0.9185
+4. Flow_IAT_Min: 0.3111
+5. Bwd_Packet_Length_Min: 0.3033
+
+**Artefactos generados:**
+- `docs/shap_importancia_global.png`
+- `docs/shap_por_clase.png`
+- `src/models/shap_top_features_por_clase.json`
+
+**Próximos pasos:**
+- Dashboard con explicaciones SHAP en cada alerta.
+- Evasión adversarial controlada (Fase 3).

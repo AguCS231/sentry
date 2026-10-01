@@ -1,0 +1,296 @@
+{
+  "BENIGN": [
+    {
+      "feature": "Bwd_Packet_Length_Min",
+      "importancia": 1.4575754404067993
+    },
+    {
+      "feature": "Init_Win_bytes_forward",
+      "importancia": 0.8030080199241638
+    },
+    {
+      "feature": "Init_Win_bytes_backward",
+      "importancia": 0.5142785310745239
+    },
+    {
+      "feature": "Bwd_Packet_Length_Std",
+      "importancia": 0.35099077224731445
+    },
+    {
+      "feature": "Total_Length_of_Fwd_Packets",
+      "importancia": 0.2455454021692276
+    },
+    {
+      "feature": "Fwd_Packet_Length_Max",
+      "importancia": 0.23873074352741241
+    },
+    {
+      "feature": "Fwd_Header_Length34",
+      "importancia": 0.20210905373096466
+    },
+    {
+      "feature": "Bwd_Packets/s",
+      "importancia": 0.1656150370836258
+    },
+    {
+      "feature": "Flow_IAT_Min",
+      "importancia": 0.16189712285995483
+    },
+    {
+      "feature": "act_data_pkt_fwd",
+      "importancia": 0.15502126514911652
+    }
+  ],
+  "DoS": [
+    {
+      "feature": "Init_Win_bytes_forward",
+      "importancia": 1.8089946508407593
+    },
+    {
+      "feature": "Init_Win_bytes_backward",
+      "importancia": 1.4411529302597046
+    },
+    {
+      "feature": "Min_Packet_Length",
+      "importancia": 0.953334629535675
+    },
+    {
+      "feature": "Bwd_Packets/s",
+      "importancia": 0.7230463624000549
+    },
+    {
+      "feature": "Bwd_Header_Length",
+      "importancia": 0.5144054889678955
+    },
+    {
+      "feature": "min_seg_size_forward",
+      "importancia": 0.4716733694076538
+    },
+    {
+      "feature": "Fwd_Header_Length34",
+      "importancia": 0.35071977972984314
+    },
+    {
+      "feature": "Bwd_Packet_Length_Std",
+      "importancia": 0.23733456432819366
+    },
+    {
+      "feature": "Fwd_IAT_Mean",
+      "importancia": 0.23142077028751373
+    },
+    {
+      "feature": "Fwd_IAT_Min",
+      "importancia": 0.224005326628685
+    }
+  ],
+  "Probe": [
+    {
+      "feature": "Init_Win_bytes_backward",
+      "importancia": 1.6265978813171387
+    },
+    {
+      "feature": "Flow_IAT_Std",
+      "importancia": 0.9764324426651001
+    },
+    {
+      "feature": "PSH_Flag_Count",
+      "importancia": 0.7801908850669861
+    },
+    {
+      "feature": "Packet_Length_Mean",
+      "importancia": 0.6869764924049377
+    },
+    {
+      "feature": "Fwd_Header_Length34",
+      "importancia": 0.6823015213012695
+    },
+    {
+      "feature": "Flow_IAT_Min",
+      "importancia": 0.5916198492050171
+    },
+    {
+      "feature": "min_seg_size_forward",
+      "importancia": 0.4929357171058655
+    },
+    {
+      "feature": "Flow_Duration",
+      "importancia": 0.4153073728084564
+    },
+    {
+      "feature": "Init_Win_bytes_forward",
+      "importancia": 0.40085935592651367
+    },
+    {
+      "feature": "Flow_Bytes/s",
+      "importancia": 0.2462628185749054
+    }
+  ],
+  "DDoS": [
+    {
+      "feature": "Init_Win_bytes_forward",
+      "importancia": 1.8953499794006348
+    },
+    {
+      "feature": "act_data_pkt_fwd",
+      "importancia": 1.2771421670913696
+    },
+    {
+      "feature": "Fwd_Packet_Length_Mean",
+      "importancia": 1.2254735231399536
+    },
+    {
+      "feature": "min_seg_size_forward",
+      "importancia": 0.8517176508903503
+    },
+    {
+      "feature": "Fwd_Packet_Length_Max",
+      "importancia": 0.7657426595687866
+    },
+    {
+      "feature": "Total_Length_of_Bwd_Packets",
+      "importancia": 0.4504201114177704
+    },
+    {
+      "feature": "Init_Win_bytes_backward",
+      "importancia": 0.4350773096084595
+    },
+    {
+      "feature": "Average_Packet_Size",
+      "importancia": 0.3059043288230896
+    },
+    {
+      "feature": "Fwd_Packet_Length_Std",
+      "importancia": 0.2666464149951935
+    },
+    {
+      "feature": "Total_Length_of_Fwd_Packets",
+      "importancia": 0.2597969174385071
+    }
+  ],
+  "Brute-force": [
+    {
+      "feature": "min_seg_size_forward",
+      "importancia": 1.8608046770095825
+    },
+    {
+      "feature": "Init_Win_bytes_forward",
+      "importancia": 1.8172664642333984
+    },
+    {
+      "feature": "Init_Win_bytes_backward",
+      "importancia": 0.9171790480613708
+    },
+    {
+      "feature": "Bwd_Packet_Length_Min",
+      "importancia": 0.5305799841880798
+    },
+    {
+      "feature": "Bwd_Header_Length",
+      "importancia": 0.432298868894577
+    },
+    {
+      "feature": "Fwd_Packet_Length_Max",
+      "importancia": 0.38409754633903503
+    },
+    {
+      "feature": "Flow_IAT_Min",
+      "importancia": 0.36023014783859253
+    },
+    {
+      "feature": "Packet_Length_Std",
+      "importancia": 0.3455655872821808
+    },
+    {
+      "feature": "Fwd_Packets/s",
+      "importancia": 0.34232664108276367
+    },
+    {
+      "feature": "Fwd_Packet_Length_Std",
+      "importancia": 0.2518520951271057
+    }
+  ],
+  "Web": [
+    {
+      "feature": "min_seg_size_forward",
+      "importancia": 1.8482834100723267
+    },
+    {
+      "feature": "Init_Win_bytes_forward",
+      "importancia": 1.3618518114089966
+    },
+    {
+      "feature": "Init_Win_bytes_backward",
+      "importancia": 1.2068437337875366
+    },
+    {
+      "feature": "Flow_Bytes/s",
+      "importancia": 1.033355712890625
+    },
+    {
+      "feature": "Fwd_IAT_Min",
+      "importancia": 0.6560235023498535
+    },
+    {
+      "feature": "Flow_IAT_Min",
+      "importancia": 0.6380985379219055
+    },
+    {
+      "feature": "Bwd_Packets/s",
+      "importancia": 0.3965042233467102
+    },
+    {
+      "feature": "Flow_Duration",
+      "importancia": 0.203782856464386
+    },
+    {
+      "feature": "URG_Flag_Count",
+      "importancia": 0.19099073112010956
+    },
+    {
+      "feature": "Down/Up_Ratio",
+      "importancia": 0.19078078866004944
+    }
+  ],
+  "Bot": [
+    {
+      "feature": "Init_Win_bytes_forward",
+      "importancia": 1.7785861492156982
+    },
+    {
+      "feature": "Bwd_Packet_Length_Mean",
+      "importancia": 1.5030125379562378
+    },
+    {
+      "feature": "Init_Win_bytes_backward",
+      "importancia": 1.4324055910110474
+    },
+    {
+      "feature": "min_seg_size_forward",
+      "importancia": 0.7650216221809387
+    },
+    {
+      "feature": "Flow_Duration",
+      "importancia": 0.4715200662612915
+    },
+    {
+      "feature": "Flow_IAT_Min",
+      "importancia": 0.258443146944046
+    },
+    {
+      "feature": "Bwd_IAT_Std",
+      "importancia": 0.23189611732959747
+    },
+    {
+      "feature": "Flow_Bytes/s",
+      "importancia": 0.21025902032852173
+    },
+    {
+      "feature": "Bwd_Packets/s",
+      "importancia": 0.20489326119422913
+    },
+    {
+      "feature": "Fwd_Header_Length34",
+      "importancia": 0.1982550173997879
+    }
+  ]
+}

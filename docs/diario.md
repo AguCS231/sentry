@@ -288,3 +288,45 @@
 **Próximos pasos:**
 - Dashboard con explicaciones SHAP en cada alerta.
 - Evasión adversarial controlada (Fase 3).
+
+
+---
+
+## 2026-10-01 — Cierre del notebook 07: evaluación en test y decisión formal
+
+**Evaluación en TEST (modelo sin puerto, baseline elegido):**
+- F1 macro: 0.9600
+- F1 weighted: 0.9987
+- F1 por clase:
+  - BENIGN: 0.9992
+  - DoS: 0.9976
+  - Probe: 0.9967
+  - DDoS: 0.9993
+  - Brute-force: 0.9988
+  - Web: 0.9749
+  - Bot: 0.7537
+
+**Comparativa con/sin puerto:** realizada en validación (notebook 07, sección 5). No se repitió en test para preservar la regla de uso único del conjunto de test.
+
+**Experimento de generalización (familia "Otros", no vista en train):**
+- Total muestras: 47
+- Detectados como ataque: 2 (4.3%)
+- Clasificados como BENIGN: 45 (95.7%)
+
+**Hallazgos SHAP documentados:**
+- Las features dominantes son de comportamiento real del flujo (tamaños, flags TCP, timing), no identificadores.
+- `Init_Win_bytes_forward` y `Init_Win_bytes_backward` dominan la mayoría de clases. Estas features dependen del sistema operativo del emisor y son manipulables por un atacante. Se documentan como limitación conocida y se plantea experimento adicional sin ellas (notebook 08).
+
+**Decisión formal:**
+- Modelo de familias oficial del proyecto: **sin Destination_Port**.
+- Coherencia con el binario y con el análisis de fuga.
+
+**Limitaciones conocidas:**
+- Train al 50% por RAM.
+- Clase Bot con precision baja (0.59) por peso desproporcionado.
+- Modelo con puerto no persistido en disco (solo análisis en validación).
+
+**Próximos pasos (notebook 08):**
+- Experimento sin `Init_Win_bytes`.
+- Evasión adversarial controlada.
+- Dashboard con SHAP integrado.

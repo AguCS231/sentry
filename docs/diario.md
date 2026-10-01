@@ -330,3 +330,28 @@
 - Experimento sin `Init_Win_bytes`.
 - Evasión adversarial controlada.
 - Dashboard con SHAP integrado.
+
+
+---
+
+## 2026-10-01 — Interpretación del resultado sobre "Otros"
+
+**Datos:** 2 de 47 muestras detectadas (4.3%). Infiltration y Heartbleed se clasifican mayoritariamente como BENIGN.
+
+**Análisis:**
+El modelo alcanza F1 macro 0.96 sobre las 7 clases que ha visto en entrenamiento, pero falla en las 2 clases que se reservaron íntegramente para test. Esto no invalida el modelo, pero sí acota su alcance:
+
+1. El modelo detecta con precisión las familias conocidas.
+2. El modelo NO generaliza a ataques con patrones muy distintos a los vistos.
+3. Coincide con el comportamiento esperado en producción: los ataques nuevos suelen colarse.
+
+**Implicación de seguridad:**
+Un IDS entrenado con un dataset cerrado no es suficiente contra amenazas emergentes. Necesita, además:
+- Reentrenamiento periódico con tráfico reciente.
+- Detección no supervisada complementaria para anomalías.
+- Alertas humanas sobre flujos "extraños" aunque el modelo los clasifique como BENIGN con confianza media.
+
+**Decisión:**
+- Este hallazgo se documenta como **limitación conocida** del sistema.
+- Se plantea como **línea de trabajo futuro** la inclusión de un módulo de detección de anomalías no supervisado (autoencoder o Isolation Forest) para complementar al clasificador supervisado.
+- Se convierte en argumento a favor de la sección de conclusiones: el TFC no vende un detector perfecto, vende un detector honesto con límites explícitos.

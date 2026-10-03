@@ -386,3 +386,46 @@ Un IDS entrenado con un dataset cerrado no es suficiente contra amenazas emergen
 **Próximos pasos:**
 - Bloque 2: evasión adversarial controlada (3 variantes).
 - Bloque 3: dashboard con SHAP.
+
+
+---
+
+## 2026-10-03 — Análisis del experimento sin Init_Win_bytes (hallazgo crítico)
+
+**Resultados comparativos (validación):**
+- F1 macro original (con Init_Win_bytes): 0.9575
+- F1 macro sin Init_Win_bytes: 0.6590
+- Delta: -0.2985
+
+**F1 por clase (delta sin - con):**
+- BENIGN: -0.0310 (impacto bajo)
+- DoS: -0.0581 (impacto bajo)
+- Probe: +0.0000 (sin impacto)
+- DDoS: -0.0012 (sin impacto)
+- Brute-force: -0.6571 (CATÁSTROFE)
+- Web: -0.6795 (CATÁSTROFE)
+- Bot: -0.6628 (CATÁSTROFE)
+
+**Hallazgo principal:**
+El modelo no aprende comportamiento para Brute-force, Web y Bot. Aprende la ventana TCP inicial del emisor, que es una huella del sistema operativo / herramienta del atacante. Las tres clases caen a F1 cercano al azar cuando se elimina esa feature.
+
+**Confirmación de la causa raíz de Bot:**
+La precision baja de Bot (0.59) detectada en el notebook 06 no era por el peso 207×, sino por dependencia de Init_Win_bytes. Eliminando esa feature, Bot cae a F1 0.075.
+
+**Clase Probe — comportamiento real puro:**
+Probe es la única familia cuyo F1 no cambia al eliminar Init_Win_bytes (Δ = 0.0000). Es la única clase que el modelo aprende por comportamiento del flujo, no por huella del entorno.
+
+**Implicación de seguridad crítica:**
+`Init_Win_bytes_forward` es trivialmente modificable por un atacante (comando de sistema operativo o una línea de código en el socket). Un atacante que conozca el modelo puede pasar de recall 0.97 a recall ~0.10 en Brute-force, Web y Bot cambiando su ventana TCP. El modelo es evadible con un solo comando.
+
+**Comparación con la literatura:**
+Los papers que reportan F1 > 0.99 sobre CIC-IDS2017 sin excluir esta feature no están midiendo detección de ataques. Están midiendo identificación del entorno del atacante. Este proyecto documenta esa distinción como aporte principal.
+
+**Decisiones:**
+- El modelo oficial del proyecto se mantiene como el original (sin Destination_Port, con Init_Win_bytes) para reportar métricas comparables con la literatura.
+- El modelo sin Init_Win_bytes se guarda como evidencia del experimento y se presenta como "modelo honesto" con sus limitaciones.
+- El hallazgo se convierte en argumento central de la sección de conclusiones y en justificación de la línea de trabajo futuro (detección no supervisada).
+
+**Próximos pasos:**
+- Bloque 2 del notebook 08: evasión adversarial controlada (3 variantes).
+- Bloque 3: dashboard con SHAP.

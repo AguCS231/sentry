@@ -1,6 +1,6 @@
 {
-  "fecha": "2026-10-02",
-  "tipo": "multi-clase por familias \u2014 sin Init_Win_bytes ni Destination_Port",
+  "fecha": "2026-10-03",
+  "tipo": "multi-clase sin Destination_Port ni Init_Win_bytes",
   "features": [
     "Flow_Duration",
     "Total_Fwd_Packets",
@@ -79,58 +79,9 @@
     "Idle_Min"
   ],
   "n_features": 75,
-  "mapeo_familias": {
-    "BENIGN": 0,
-    "DoS": 1,
-    "Probe": 2,
-    "DDoS": 3,
-    "Brute-force": 4,
-    "Web": 5,
-    "Bot": 6
-  },
   "features_eliminadas": [
     "Init_Win_bytes_forward",
     "Init_Win_bytes_backward"
   ],
-  "metricas_val": {
-    "f1_macro": 0.659031880135063,
-    "f1_weighted": 0.9645103724705064
-  },
-  "comparativa_con_modelo_original": {
-    "BENIGN": {
-      "con_init_win": 0.9992156194549877,
-      "sin_init_win": 0.9682559385766792,
-      "delta": -0.03095968087830847
-    },
-    "DoS": {
-      "con_init_win": 0.9980490377010283,
-      "sin_init_win": 0.9399539543276709,
-      "delta": -0.05809508337335734
-    },
-    "Probe": {
-      "con_init_win": 0.9964645091106881,
-      "sin_init_win": 0.9965062030586413,
-      "delta": 4.169394795328074e-05
-    },
-    "DDoS": {
-      "con_init_win": 0.999374185136897,
-      "sin_init_win": 0.9981758482305728,
-      "delta": -0.0011983369063242044
-    },
-    "Brute-force": {
-      "con_init_win": 0.9992695398100804,
-      "sin_init_win": 0.3421884342700948,
-      "delta": -0.6570811055399856
-    },
-    "Web": {
-      "con_init_win": 0.9726443768996961,
-      "sin_init_win": 0.2931726907630522,
-      "delta": -0.6794716861366439
-    },
-    "Bot": {
-      "con_init_win": 0.7377892030848329,
-      "sin_init_win": 0.07497009171872923,
-      "delta": -0.6628191113661036
-    }
-  }
+  "f1_macro_val": 0.659031880135063
 }

@@ -452,3 +452,47 @@ Los papers que reportan F1 > 0.99 sobre CIC-IDS2017 sin excluir esta feature no 
 
 **Próximos pasos:**
 - Bloque 3: dashboard con SHAP integrado.
+
+
+---
+
+## 2026-10-03 — Evasión adversarial: resultado crítico
+
+**3 variantes probadas sobre test (424.532 muestras):**
+- V1 — Cambio de ventana TCP: factor aleatorio 0.5-2.0 sobre `Init_Win_bytes_forward/backward`.
+- V2 — Suavizado temporal: reducción del 30% en `Flow_IAT_Std`, `Fwd_IAT_Std`, `Bwd_IAT_Std`.
+- V3 — Combinada.
+
+**Resultados (recall por clase):**
+
+| Clase | Base | V1 ventana | V2 IAT | V3 combinada |
+|---|---|---|---|---|
+| BENIGN | 0.9984 | 0.9989 | 0.9985 | 0.9990 |
+| DoS | 0.9997 | 0.3742 | 0.9960 | 0.3690 |
+| Probe | 0.9998 | 0.9933 | 0.9997 | 0.9931 |
+| DDoS | 0.9999 | 0.5204 | 0.9999 | 0.4911 |
+| Brute-force | 0.9990 | 0.4071 | 0.9990 | 0.4066 |
+| Web | 0.9851 | 0.3164 | 0.9851 | 0.3045 |
+| Bot | 0.9839 | 0.6367 | 0.9839 | 0.6367 |
+
+**Análisis:**
+1. **V2 (suavizado temporal) no tiene impacto significativo.** El modelo no depende de la varianza de IAT para clasificar.
+2. **V1 (cambio de ventana TCP) es devastador.** 5 de 7 clases caen por debajo del 0.65 de recall.
+3. **V3 (combinada) ≈ V1.** La caída se debe exclusivamente a la ventana TCP.
+4. **BENIGN y Probe resisten.** Coherente con el experimento sin Init_Win_bytes del notebook 07: eran las dos únicas clases que no dependían de esa feature.
+
+**Implicación de seguridad (crítica):**
+Un atacante puede modificar su ventana TCP inicial con un comando trivial en cualquier SO (Linux: `ip route change`, Windows: modificación del stack TCP). Con un solo cambio puede pasar de recall 0.9997 a 0.3742 en DoS, de 0.9999 a 0.5204 en DDoS, de 0.9851 a 0.3164 en Web. El detector es evadible sin conocer los pesos del modelo, solo conociendo qué feature usa.
+
+**Comparación con la literatura:**
+Los papers que reportan F1 > 0.99 sobre CIC-IDS2017 con `Init_Win_bytes` incluida no están midiendo detección de ataques. Están midiendo la huella del sistema operativo del generador del tráfico. Este proyecto documenta esa distinción como aporte principal.
+
+**Decisiones:**
+- El resultado se convierte en el titular de la sección de conclusiones.
+- Se documenta como limitación crítica del modelo oficial.
+- Justifica el uso de detección no supervisada complementaria como línea de trabajo futuro.
+- El modelo sin Init_Win_bytes (F1 0.66) se presenta como alternativa honesta, aunque con menor rendimiento.
+
+**Próximos pasos:**
+- Bloque 3: dashboard con SHAP integrado.
+- Memoria: este resultado va al capítulo de discusión y conclusiones.

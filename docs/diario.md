@@ -429,3 +429,26 @@ Los papers que reportan F1 > 0.99 sobre CIC-IDS2017 sin excluir esta feature no 
 **Próximos pasos:**
 - Bloque 2 del notebook 08: evasión adversarial controlada (3 variantes).
 - Bloque 3: dashboard con SHAP.
+
+
+---
+
+## 2026-10-03 — Evasión adversarial controlada (bloque 2 del notebook 08)
+
+**Qué probé:**
+- Simulación de 3 ataques de evasión sobre el conjunto de test:
+  1. Cambio de ventana TCP (factor 0.5-2.0 sobre Init_Win_bytes_forward/backward).
+  2. Suavizado temporal (reducción del 30% en IAT Std).
+  3. Combinación de ambas.
+
+**Resultados:**
+- (rellenar con las caídas de recall observadas)
+
+**Interpretación:**
+- (rellenar)
+
+**Decisión:**
+- (rellenar)
+
+**Próximos pasos:**
+- Bloque 3: dashboard con SHAP integrado.

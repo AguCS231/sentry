@@ -355,3 +355,34 @@ Un IDS entrenado con un dataset cerrado no es suficiente contra amenazas emergen
 - Este hallazgo se documenta como **limitación conocida** del sistema.
 - Se plantea como **línea de trabajo futuro** la inclusión de un módulo de detección de anomalías no supervisado (autoencoder o Isolation Forest) para complementar al clasificador supervisado.
 - Se convierte en argumento a favor de la sección de conclusiones: el TFC no vende un detector perfecto, vende un detector honesto con límites explícitos.
+
+
+---
+
+## 2026-10-03 — Experimento sin Init_Win_bytes (bloque 1 del notebook 08)
+
+**Qué probé:**
+- Reentrenamiento del modelo de familias eliminando `Init_Win_bytes_forward` y `Init_Win_bytes_backward` (features que dominaban en SHAP y dependen del SO).
+- Comparativa F1 por clase contra el modelo original.
+
+**Resultados:**
+- F1 macro sin Init_Win_bytes: 0.6590
+- F1 macro original: 0.9575
+- Delta F1 macro: -0.2985
+  - BENIGN: -0.0310
+  - DoS: -0.0581
+  - Probe: +0.0000
+  - DDoS: -0.0012
+  - Brute-force: -0.6571
+  - Web: -0.6795
+  - Bot: -0.6628
+
+**Interpretación:**
+- (rellenar tras ver resultados)
+
+**Decisión:**
+- (rellenar tras ver resultados)
+
+**Próximos pasos:**
+- Bloque 2: evasión adversarial controlada (3 variantes).
+- Bloque 3: dashboard con SHAP.
